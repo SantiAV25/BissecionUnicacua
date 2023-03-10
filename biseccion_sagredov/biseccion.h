@@ -6,7 +6,7 @@
 #define BISECCION_SAGREDOV_BISECCION_H
 #include <cfloat>
 #include <cmath>
-
+#include <vector>
 #include <string>
 #include "Expression.h"
 
@@ -20,6 +20,24 @@ using std::string;
  *@brief Raices de ecuaciones de una variable
  */
 namespace raices{
+    /**
+     * @brief Aproximacion de una raiz
+     */
+    struct aproximacion{
+        double xAnt; /*!< valor de  la aproximacion*/
+        double xNuv;
+        double erp; /*!<Error Relativo porcentual*/
+
+    };
+
+    /**
+     * @brief Solucion de metodo de raices
+     */
+    struct solucion{
+        double raiz; /*!<Raiz encontrada (NAN  si no se encontro)*/
+        vector<aproximacion> aproximaciones;
+
+    };
     /**
      * @brief Metodo de biseccion
      */
@@ -38,15 +56,18 @@ namespace raices{
          * @param Xb Extremo Superiro del intervalo
          * @param erp Error Relativo Porcentual
          * @param n  Maximo de interaciones
-         * @return Valor de la raiz,NAN si no se logra encontrar
+         * @return Solucion que contiene la Raiz y las aproximaciones
          */
 
-        double encontrarRaiz(double xA, double xB, double erp, int n){
+        solucion encontrarRaiz(double xA, double xB, double erp, int n){
+
+            solucion s; //Instancia de solucion
 
             //Paso1
             int i = 1;
             //Paso2
             double xAnterior = (xA + xB)/2.0f;
+            s.raiz = NAN;
 
             //Primera Aproximación
             if(f(xA)*f(xAnterior)>0.0f){
@@ -60,9 +81,11 @@ namespace raices{
                 //paso 4 nueva aproximacion
                 double  xNueva = (xA + xB)/2.0f;
                 double er = fabs((xNueva-xAnterior)/xNueva) * 100.0f;
+                s.aproximaciones.push_back({xAnterior,xNueva,er});
                 //paso 5
                 if(er < erp){
-                    return xNueva;
+                    s.raiz = xNueva;
+                    return s;
                 }
                 //paso 6
                 ++i;
@@ -77,7 +100,7 @@ namespace raices{
             }
 
 
-            return NAN;
+            return s;
 
         }
 
