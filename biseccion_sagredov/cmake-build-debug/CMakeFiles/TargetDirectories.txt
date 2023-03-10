@@ -1,0 +1,3 @@
+D:/biseccion_sagredov/cmake-build-debug/CMakeFiles/biseccion_sagredov.dir
+D:/biseccion_sagredov/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/biseccion_sagredov/cmake-build-debug/CMakeFiles/rebuild_cache.dir

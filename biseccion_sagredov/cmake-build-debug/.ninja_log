@@ -1,0 +1,10 @@
+# ninja log v5
+762	1057	7001809850586783	biseccion_sagredov.exe	bae7f94560746435
+0	760	7001809847652926	CMakeFiles/biseccion_sagredov.dir/main.cpp.obj	6f6392714096260c
+0	170	7001818790585460	build.ninja	e258c9db7df16a3d
+4	2610	7001822376146848	CMakeFiles/biseccion_sagredov.dir/main.cpp.obj	6f6392714096260c
+2612	2950	7001822379499047	biseccion_sagredov.exe	bae7f94560746435
+3	2137	7001832868982170	CMakeFiles/biseccion_sagredov.dir/main.cpp.obj	6f6392714096260c
+2138	2444	7001832872031932	biseccion_sagredov.exe	bae7f94560746435
+3	2041	7001835208376769	CMakeFiles/biseccion_sagredov.dir/main.cpp.obj	6f6392714096260c
+2041	2377	7001835211734687	biseccion_sagredov.exe	bae7f94560746435
