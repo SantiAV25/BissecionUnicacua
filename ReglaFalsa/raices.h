@@ -9,9 +9,13 @@
 #include <cmath>
 #include <vector>
 #include <string>
+#include <iomanip>
+
 
 
 using std::vector;
+using std::setw;
+using std::setprecision;
 
 namespace raices {
 /**
@@ -30,6 +34,20 @@ namespace raices {
     struct solucion {
         double raiz = NAN; /*!<Raiz encontrada (NAN  si no se encontro)*/
         vector <aproximacion> aproximaciones;
+
+        /**
+         * @brief Determina si la solucion existe
+         */
+         bool existe(){
+            return (!std::isnan(raiz));
+         }
+         /**
+          * @brief function que retonar la cantidad aproximaciones realizadas
+          * @return Cantidad Aproximaciones
+          */
+         int cantAproximaciones(){
+             return  aproximaciones.size();
+         }
 
     };
 

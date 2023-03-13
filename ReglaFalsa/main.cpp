@@ -4,11 +4,13 @@
 #include "biseccion.h"
 #include "reglafalsa.h"
 #include "raices.h"
+#include <iomanip>
 
 using std::cout;
 using std::endl;
 using std::string;
-
+using std::setw;
+using std::setprecision;
 using raices::biseccion;
 using raices::solucion;
 using raices::aproximacion;
@@ -38,11 +40,15 @@ void caso_1(){
     }else{
         cout <<"Raiz:" <<solucionBiseccion.raiz<< endl;
         cout<<"Aproximaciones"<<endl;
+        cout << setw(15) <<"Valor Inical"
+            << setw(15)<<"Valor Final"
+            << setw(15)<<"ERP"
+            <<endl;
         for (auto &a: solucionBiseccion.aproximaciones) {
-            cout<< a.xAnt  << "  "<< a.xNuv << "  " << a.erp<<endl;
+            cout<< setw(15)<< setprecision(8) << a.xAnt  <<setw(15) << setprecision(8) << a.xNuv << setw(15) << setprecision(8) << a.erp<<endl;
         }
 
-        cout<<"Numero de aproximaciones: "<<endl;
+        cout<<"Numero de aproximaciones:"<< solucionBiseccion.cantAproximaciones()<<endl;
     }
 
     cout<<"==========================================================="<<endl;
@@ -58,6 +64,8 @@ void caso_1(){
         for (auto &a: solucionReglaFalsa.aproximaciones) {
             cout<< a.xAnt  << "  "<< a.xNuv << "  " << a.erp<<endl;
         }
+
+        cout<<"Numero de aproximaciones:"<< solucionReglaFalsa.cantAproximaciones()<<endl;
     }
 
 

@@ -42,6 +42,43 @@ namespace raices {
 
             solucion s; //Instancia de solucion
 
+            //Paso1
+            int i = 1;
+            //Paso2
+            double xAnterior = xS -((f(xS)*(xI-xS))/(f(xI)-f(xS)));
+            s.raiz = NAN;
+
+            //Primera Aproximación
+            if(f(xI)*f(xAnterior)>0.0f){
+                xI = xAnterior;
+            }else{
+                xS=xAnterior;
+            }
+
+            //paso3
+            while(i<= n){
+                //paso 4 nueva aproximacion
+                double  xNueva =  xS -((f(xS)*(xI-xS))/(f(xI)-f(xS)));
+                double er = fabs((xNueva-xAnterior)/xNueva) * 100.0f;
+                s.aproximaciones.push_back({xAnterior,xNueva,er});
+                //paso 5
+                if(er < erp){
+                    s.raiz = xNueva;
+                    return s;
+                }
+                //paso 6
+                ++i;
+                //paso 7
+                if(f(xI)*f(xNueva)>0.0f){
+                    xI = xNueva;
+                }else{
+                    xS=xNueva;
+                }
+
+                xAnterior = xNueva;
+            }
+
+
             return s;
         }
 
